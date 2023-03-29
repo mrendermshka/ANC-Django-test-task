@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block scripts %}
+{% load static %}
+
+<script src="{% static 'worker.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<table class="table">
+    <tr>
+        <th>
+            <form action="SortBy" method="post">
+                <button  class="btn btn-link" type="submit">employee_id</button>
+                <input type="text" name="for"
+                       value="employee_id"
+                       style="display:none;">{% csrf_token %}</form>
+        </th>
+        <th>
+            <form action="SortBy" method="post">
+                <button  class="btn btn-link" type="submit">full_name</button>
+                <input type="text" name="for" value="full_name"
+                       style="display:none;">{% csrf_token %}</form>
+        </th>
+        <th>
+            <form action="SortBy" method="post">
+                <button  class="btn btn-link" type="submit">position</button>
+                <input type="text" name="for" value="position"
+                       style="display:none;">{% csrf_token %}</form>
+        </th>
+        <th>
+            <form action="SortBy" method="post">
+                <button  class="btn btn-link" type="submit">Employment_date</button>
+                <input type="text" name="for"
+                       value="Employment_date"
+                       style="display:none;">{% csrf_token %}</form>
+        </th>
+        <th>
+            <form action="SortBy" method="post">
+                <button  class="btn btn-link" type="submit">email</button>
+                <input type="text" name="for" value="email"
+                       style="display:none;">{% csrf_token %}</form>
+        </th>
+    </tr>
+    {% for i in workers %}
+        <tr>
+            <td>{{i.employee_id}} </td>
+            <td>{{i.full_name}} </td>
+            <td>{{i.position}} </td>
+            <td>{{i.Employment_date}} </td>
+            <td>{{i.email}} </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
